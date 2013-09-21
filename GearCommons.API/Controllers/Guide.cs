@@ -13,6 +13,11 @@ namespace GearCommons.API.Controllers {
 		public IEnumerable<string> Images { get; set; }
 		public Rating Rating { get; set; }
 
+		public Guide() {
+			Tips = new List<string>();
+			Images = new List<string>();
+		}
+
 		public void AddTip(string tip) {
 			var tips = Tips.ToList();
 			tips.Add(tip);
