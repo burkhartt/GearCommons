@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.Helpers;
 using System.Web.Http;
-using Google.Maps.Geocoding;
+using Newtonsoft.Json;
 
 namespace GearCommons.API.Controllers {
 	public class GuidesController : ApiController {
@@ -18,12 +17,12 @@ namespace GearCommons.API.Controllers {
 		// GET api/guides
 		public dynamic Get() {
 			//var results = locationSeracher.Search("Outdoor activities near Boston, MA");
-			return Json.Encode(guideRepository.GetAll());
+			return JsonConvert.SerializeObject(guideRepository.GetAll());			
 		}
 
 		// GET api/guides/4AF75A7D-E289-45EF-A09A-D12ADC94E9A1
 		public dynamic Get(Guid id) {
-			return Json.Encode(guideRepository.GetById(id));
+			return JsonConvert.SerializeObject(guideRepository.GetById(id));
 		}
 
 		// POST api/guides
@@ -40,7 +39,7 @@ namespace GearCommons.API.Controllers {
 		public dynamic Search(double miles, double latitude, double longitude) {
 			var guides = guideRepository.GetAll();
 			var guidesInRadius = guides.Where(x => x.IsWithinMiles(5, latitude, longitude));
-			return Json.Encode(guidesInRadius);
+			return JsonConvert.SerializeObject(guidesInRadius);
 		}				
 	}
 }
