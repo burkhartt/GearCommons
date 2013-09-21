@@ -11,7 +11,7 @@ namespace GearCommons.API.Controllers {
 		public string Description { get; set; }
 		public IEnumerable<string> Tips { get; set; }
 		public IEnumerable<string> Images { get; set; }
-		public decimal Rating { get; set; }
+		public Rating Rating { get; set; }
 
 		public void AddTip(string tip) {
 			var tips = Tips.ToList();
@@ -35,6 +35,14 @@ namespace GearCommons.API.Controllers {
 			var k = (6371*j);
 			var miles = k*1.60934;
 			return miles <= mileRadius;
+		}
+
+		public void VoteUp() {
+			Rating.UpVotes++;
+		}
+
+		public void VoteDown() {
+			Rating.DownVotes++;
 		}
 	}
 }

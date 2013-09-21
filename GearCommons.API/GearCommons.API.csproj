@@ -198,8 +198,10 @@
     <Compile Include="Controllers\GuidesController.cs" />
     <Compile Include="Controllers\ImagesController.cs" />
     <Compile Include="Controllers\IRepository.cs" />
+    <Compile Include="Controllers\Rating.cs" />
     <Compile Include="Controllers\Repository.cs" />
     <Compile Include="Controllers\TipsController.cs" />
+    <Compile Include="Controllers\VoteController.cs" />
     <Compile Include="DatabaseFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
