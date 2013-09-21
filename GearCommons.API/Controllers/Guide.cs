@@ -24,5 +24,17 @@ namespace GearCommons.API.Controllers {
 			images.Add(image);
 			Images = images;
 		}
+
+		public bool IsWithinMiles(int mileRadius, double latitude, double longitude) {
+			var e = (3.1415926538*Latitude/180);
+			var f = (3.1415926538*Longitude/180);
+			var g = (3.1415926538*latitude/180);
+			var h = (3.1415926538*longitude/180);
+			var i = (Math.Cos(e)*Math.Cos(g)*Math.Cos(f)*Math.Cos(h) + Math.Cos(e)*Math.Sin(f)*Math.Cos(g)*Math.Sin(h) + Math.Sin(e)*Math.Sin(g));
+			var j = (Math.Acos(i));
+			var k = (6371*j);
+			var miles = k*1.60934;
+			return miles <= mileRadius;
+		}
 	}
 }

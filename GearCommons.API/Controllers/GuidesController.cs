@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Web.Helpers;
 using System.Web.Http;
 
@@ -23,11 +25,18 @@ namespace GearCommons.API.Controllers {
 		// POST api/guides
 		public void Post([FromBody] Guide guide) {
 			guideRepository.Save(guide);
-		}		
+		}
 
 		// DELETE api/guides/EC81DEAA-CB2A-4175-9B7A-ABABA6F15264
 		public void Delete(Guid id) {
 			guideRepository.Delete(id);
 		}
+
+		[HttpGet]
+		public dynamic Search(double miles, double latitude, double longitude) {
+			var guides = guideRepository.GetAll();
+			var guidesInRadius = guides.Select(x => x.IsWithinMiles(5, latitude, longitude));
+			return Json.Encode(guidesInRadius);
+		}		
 	}
 }
