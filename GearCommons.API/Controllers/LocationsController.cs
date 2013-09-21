@@ -1,13 +1,15 @@
-﻿using System.Web.Http;
+﻿using System.Web.Helpers;
+using System.Web.Http;
+using Newtonsoft.Json;
 
 namespace GearCommons.API.Controllers {
 	public class LocationsController : ApiController {
 		// GET api/locations
 		public dynamic Get() {
-			return new[] {
-				new Location { Latitude = 42.3581, LatitudeDirection = "N", Longitude = 71.0636, LongitudeDirection = "W"},
-				new Location { Latitude = 52.2050, LatitudeDirection = "N", Longitude = 0.1190, LongitudeDirection = "E"}
+			var locations = new[] {
+				new Location {Latitude = 42.3581, LatitudeDirection = "N", Longitude = 71.0636, LongitudeDirection = "W"}, new Location {Latitude = 52.2050, LatitudeDirection = "N", Longitude = 0.1190, LongitudeDirection = "E"}
 			};
+			return Json.Encode(locations);
 		}
 
 		// GET api/values/5
