@@ -16,7 +16,8 @@ namespace GearCommons.API.Controllers {
 
 		// GET api/values/5
 		public dynamic Get(Guid id) {
-			return new Location {Latitude = 42.3581, LatitudeDirection = "N", Longitude = 71.0636, LongitudeDirection = "W", Id = new Guid("C4F4ADEF-641C-4098-9BB2-E13AB44DA9C7")};
+			var location = new Location {Latitude = 42.3581, LatitudeDirection = "N", Longitude = 71.0636, LongitudeDirection = "W", Id = new Guid("C4F4ADEF-641C-4098-9BB2-E13AB44DA9C7")};
+			return Json.Encode(location);
 		}
 
 		// POST api/values
