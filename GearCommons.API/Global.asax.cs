@@ -1,12 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Autofac;
+using Autofac.Integration.WebApi;
+using GearCommons.API.Controllers;
 using Newtonsoft.Json;
 
 namespace GearCommons.API {
@@ -21,8 +26,16 @@ namespace GearCommons.API {
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+
+			var builder = new ContainerBuilder();			
+			builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+			builder.RegisterGeneric(typeof (Repository<>)).As(typeof (IRepository<>));
+			builder.Register(c => new DatabaseFactory(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString)).As<IDatabaseFactory>();
+			
+			var container = builder.Build();
+
+			var resolver = new AutofacWebApiDependencyResolver(container);
+			GlobalConfiguration.Configuration.DependencyResolver = resolver;
 		}
 	}
-
-	
 }
