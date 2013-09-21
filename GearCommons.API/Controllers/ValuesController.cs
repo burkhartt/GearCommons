@@ -13,8 +13,9 @@ namespace GearCommons.API.Controllers {
 		}
 
 		// GET api/values/5
-		public string Get(int id) {
-			return "value";
+		public dynamic Get(int id) {
+			var asdf = new Blah { Hmm = "Ok"};
+			return asdf;
 		}
 
 		// POST api/values
@@ -28,5 +29,9 @@ namespace GearCommons.API.Controllers {
 		// DELETE api/values/5
 		public void Delete(int id) {
 		}
+	}
+
+	public class Blah {
+		public string Hmm { get; set; }
 	}
 }
