@@ -31,7 +31,7 @@ namespace GearCommons.API.Controllers {
 			Images = images;
 		}
 
-		public bool IsWithinMiles(int mileRadius, double latitude, double longitude) {
+		public bool IsWithinMiles(double mileRadius, double latitude, double longitude) {
 			var e = (3.1415926538*Latitude/180);
 			var f = (3.1415926538*Longitude/180);
 			var g = (3.1415926538*latitude/180);

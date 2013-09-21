@@ -38,7 +38,7 @@ namespace GearCommons.API.Controllers {
 		[HttpGet]
 		public dynamic Search(double miles, double latitude, double longitude) {
 			var guides = guideRepository.GetAll();
-			var guidesInRadius = guides.Where(x => x.IsWithinMiles(5, latitude, longitude));
+			var guidesInRadius = guides.Where(x => x.IsWithinMiles(miles, latitude, longitude));
 			return JsonConvert.SerializeObject(guidesInRadius);
 		}				
 	}
