@@ -12,33 +12,33 @@ namespace GearCommons.API {
 				defaults: new { id = RouteParameter.Optional }
 			);
 
-			config.Routes.MapHttpRoute(
-				name: "Tips",
-				routeTemplate: "api/guides/{id}/tips",
-				defaults: new { controller = "Tips" },
-				constraints: new { action = @"[a-zA-Z]+" }
-				);
+			//config.Routes.MapHttpRoute(
+			//	name: "Tips",
+			//	routeTemplate: "api/guides/{id}/tips",
+			//	defaults: new { controller = "Tips" },
+			//	constraints: new { action = @"[a-zA-Z]+" }
+			//	);
 
-			config.Routes.MapHttpRoute(
-				name: "Images",
-				routeTemplate: "api/guides/{id}/images",
-				defaults: new { controller = "Images" },
-				constraints: new { action = @"[a-zA-Z]+" }
-				);
+			//config.Routes.MapHttpRoute(
+			//	name: "Images",
+			//	routeTemplate: "api/guides/{id}/images",
+			//	defaults: new { controller = "Images" },
+			//	constraints: new { action = @"[a-zA-Z]+" }
+			//	);
 
-			config.Routes.MapHttpRoute(
-				name: "Search",
-				routeTemplate: "api/guides/search",
-				defaults: new { controller = "Guides", action = "Search" },
-				constraints: new { action = @"[a-zA-Z]+" }
-				);
+			//config.Routes.MapHttpRoute(
+			//	name: "Search",
+			//	routeTemplate: "api/guides/search",
+			//	defaults: new { controller = "Guides", action = "Search" },
+			//	constraints: new { action = @"[a-zA-Z]+" }
+			//	);
 
-			config.Routes.MapHttpRoute(
-				name: "Vote",
-				routeTemplate: "api/guides/{id}/vote/{action}",
-				defaults: new { controller = "Vote" },
-				constraints: new { action = @"[a-zA-Z]+" }
-				);
+			//config.Routes.MapHttpRoute(
+			//	name: "Vote",
+			//	routeTemplate: "api/guides/{id}/vote/{action}",
+			//	defaults: new { controller = "Vote" },
+			//	constraints: new { action = @"[a-zA-Z]+" }
+			//	);
 
 			// Uncomment the following line of code to enable query support for actions with an IQueryable or IQueryable<T> return type.
 			// To avoid processing unexpected or malicious queries, use the validation settings on QueryableAttribute to validate incoming queries.
