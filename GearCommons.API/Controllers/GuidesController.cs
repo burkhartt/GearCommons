@@ -23,7 +23,7 @@ namespace GearCommons.API.Controllers {
 		// POST api/guides
 		public void Post([FromBody] Guide guide) {
 			guideRepository.Save(guide);
-		}
+		}		
 
 		// DELETE api/guides/EC81DEAA-CB2A-4175-9B7A-ABABA6F15264
 		public void Delete(Guid id) {

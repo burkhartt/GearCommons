@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GearCommons.API.Controllers {
 	public class Guide {
@@ -13,5 +14,17 @@ namespace GearCommons.API.Controllers {
 		public IEnumerable<string> Tips { get; set; }
 		public IEnumerable<string> Images { get; set; }
 		public decimal Rating { get; set; }
+
+		public void AddTip(string tip) {
+			var tips = Tips.ToList();
+			tips.Add(tip);
+			Tips = tips;
+		}
+
+		public void AddImage(string image) {
+			var images = Images.ToList();
+			images.Add(image);
+			Images = images;
+		}
 	}
 }
