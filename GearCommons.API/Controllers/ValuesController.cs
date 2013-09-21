@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Web.Helpers;
 using System.Web.Http;
 
 namespace GearCommons.API.Controllers {
@@ -15,7 +16,7 @@ namespace GearCommons.API.Controllers {
 		// GET api/values/5
 		public dynamic Get(int id) {
 			var asdf = new Blah { Hmm = "Ok"};
-			return asdf;
+			return Json.Encode(asdf);
 		}
 
 		// POST api/values
