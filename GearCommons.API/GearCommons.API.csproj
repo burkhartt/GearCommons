@@ -179,7 +179,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AllowCrossSiteJsonAttribute.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -208,10 +207,12 @@
     <Compile Include="Controllers\Repository.cs" />
     <Compile Include="Controllers\TipsController.cs" />
     <Compile Include="Controllers\VoteController.cs" />
+    <Compile Include="CorsMessageHandler.cs" />
     <Compile Include="DatabaseFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HandlerConfig.cs" />
     <Compile Include="IDatabaseFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

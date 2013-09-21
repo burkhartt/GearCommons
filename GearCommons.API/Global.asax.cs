@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
 using System.Reflection;
 using System.Web;
 using System.Web.Helpers;
@@ -25,7 +24,7 @@ namespace GearCommons.API {
 			WebApiConfig.Register(GlobalConfiguration.Configuration);			
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
-			GlobalFilters.Filters.Add(new AllowCrossSiteJsonAttribute());
+			HandlerConfig.RegisterHandlers(GlobalConfiguration.Configuration.MessageHandlers);
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 
 			var builder = new ContainerBuilder();			
