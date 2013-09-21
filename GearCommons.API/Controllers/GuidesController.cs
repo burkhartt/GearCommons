@@ -3,17 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Helpers;
 using System.Web.Http;
+using Google.Maps.Geocoding;
 
 namespace GearCommons.API.Controllers {
 	public class GuidesController : ApiController {
 		private readonly IRepository<Guide> guideRepository;
+		private readonly ILocationSeracher locationSeracher;
 
-		public GuidesController(IRepository<Guide> guideRepository) {
+		public GuidesController(IRepository<Guide> guideRepository, ILocationSeracher locationSeracher) {
 			this.guideRepository = guideRepository;
+			this.locationSeracher = locationSeracher;
 		}
 
 		// GET api/guides
 		public dynamic Get() {
+			//var results = locationSeracher.Search("Outdoor activities near Boston, MA");
 			return Json.Encode(guideRepository.GetAll());
 		}
 
@@ -37,6 +41,6 @@ namespace GearCommons.API.Controllers {
 			var guides = guideRepository.GetAll();
 			var guidesInRadius = guides.Where(x => x.IsWithinMiles(5, latitude, longitude));
 			return Json.Encode(guidesInRadius);
-		}		
+		}				
 	}
 }

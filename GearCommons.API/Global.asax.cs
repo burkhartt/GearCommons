@@ -25,12 +25,14 @@ namespace GearCommons.API {
 			WebApiConfig.Register(GlobalConfiguration.Configuration);			
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
+			GlobalFilters.Filters.Add(new AllowCrossSiteJsonAttribute());
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 
 			var builder = new ContainerBuilder();			
 			builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 			builder.RegisterGeneric(typeof (Repository<>)).As(typeof (IRepository<>));
 			builder.Register(c => new DatabaseFactory(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString)).As<IDatabaseFactory>();
+			builder.RegisterType<LocationSearcher>().As<ILocationSeracher>();
 			
 			var container = builder.Build();
 
@@ -38,6 +40,4 @@ namespace GearCommons.API {
 			GlobalConfiguration.Configuration.DependencyResolver = resolver;
 		}
 	}
-
-
 }

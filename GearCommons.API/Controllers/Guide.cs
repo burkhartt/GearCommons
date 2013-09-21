@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Google.Maps.Geocoding;
 
 namespace GearCommons.API.Controllers {
 	public class Guide {
