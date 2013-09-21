@@ -1,10 +1,11 @@
-﻿using System.Web.Mvc;
+﻿using System.Web.Http.Filters;
+using ActionFilterAttribute = System.Web.Mvc.ActionFilterAttribute;
 
 namespace GearCommons.API {
 	public class AllowCrossSiteJsonAttribute : ActionFilterAttribute {
-		public override void OnActionExecuting(ActionExecutingContext filterContext) {
-			filterContext.RequestContext.HttpContext.Response.AddHeader("Access-Control-Allow-Origin", "*");
-			base.OnActionExecuting(filterContext);
+		public void OnActionExecuted(HttpActionExecutedContext actionExecutedContext) {
+			if (actionExecutedContext.Response == null) return;
+			actionExecutedContext.Response.Headers.Add("Access-Control-Allow-Origin", "*");
 		}
 	}
 }
