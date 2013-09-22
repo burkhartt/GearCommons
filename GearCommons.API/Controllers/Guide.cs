@@ -10,8 +10,8 @@ namespace GearCommons.API.Controllers {
 		public Guid Id { get; set; }
 		public string Name { get; set; }
 		public string Description { get; set; }
-		public IEnumerable<string> Tips { get; set; }
-		public IEnumerable<string> Images { get; set; }
+		public List<string> Tips { get; set; }
+		public List<string> Images { get; set; }
 		public Rating Rating { get; set; }
 
 		public Guide() {
